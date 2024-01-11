@@ -500,9 +500,9 @@ modules:
         commit: 3bb3d757681e6cc5135aec6529a753dc3dcdcfb9
         x-checker-data:
           type: json
-          parent-id: materialgram-0
+          parent-id: materialgram-git-0
           commit-data-url: >-
-            "https://github.com/TDesktop-x64/tdesktop/raw/\($parent.new.tag//$parent.current.tag)/snap/snapcraft.yaml"
+            "https://github.com/kukuruzka165/materialgram/raw/\($parent.new.tag//$parent.current.tag)/snap/snapcraft.yaml"
           commit-query: >-
             .parts.webrtc."source-commit"
           version-data-url: >-
