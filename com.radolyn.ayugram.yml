@@ -1,9 +1,9 @@
-id: io.github.kukuruzka165.materialgram
+id: com.radolyn.ayugram
 runtime: org.freedesktop.Platform
 runtime-version: '23.08'
 sdk: org.freedesktop.Sdk
-command: materialgram
-rename-icon: materialgram
+command: ayugram-desktop
+rename-icon: ayugram
 finish-args:
   - --share=ipc
   - --share=network
@@ -522,9 +522,9 @@ modules:
         commit: 3bb3d757681e6cc5135aec6529a753dc3dcdcfb9
         x-checker-data:
           type: json
-          parent-id: materialgram-git-0
+          parent-id: ayugram-git-0
           commit-data-url: >-
-            "https://github.com/kukuruzka165/materialgram/raw/\($parent.new.tag//$parent.current.tag)/snap/snapcraft.yaml"
+            "https://github.com/AyuGram/AyuGramDesktop/raw/\($parent.new.tag//$parent.current.tag)/snap/snapcraft.yaml"
           commit-query: >-
             .parts.webrtc."source-commit"
           version-data-url: >-
@@ -538,7 +538,7 @@ modules:
     cleanup:
       - '*'
 
-  - name: materialgram
+  - name: ayugram
     buildsystem: cmake-ninja
     builddir: true
     build-options:
@@ -553,12 +553,12 @@ modules:
       - -DDESKTOP_APP_USE_PACKAGED_LAZY=ON
     sources:
       - type: git
-        url: https://github.com/kukuruzka165/materialgram.git
-        commit: 81ee90bf00fb611a77dab0760c920ac18f98bb1a
-        tag: v4.15.1.2
+        url: https://github.com/AyuGram/AyuGramDesktop.git
+        commit: bf5337259d7528d0a40a6241eab8134097cf78c7
+        tag: v4.15
         x-checker-data:
           type: json
-          url: https://api.github.com/repos/kukuruzka165/materialgram/releases
+          url: https://api.github.com/repos/AyuGram/AyuGramDesktop/releases
           tag-query: first | .tag_name
           timestamp-query: first | .published_at
           version-query: $tag | sub("^[vV]"; "")
