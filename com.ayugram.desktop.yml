@@ -1,9 +1,9 @@
-id: org.telegram.desktop
+id: com.ayugram.desktop
 runtime: org.freedesktop.Platform
 runtime-version: '23.08'
 sdk: org.freedesktop.Sdk
-command: telegram-desktop
-rename-icon: telegram
+command: ayugram-desktop
+rename-icon: com.ayugram.desktop
 finish-args:
   - --share=ipc
   - --share=network
@@ -428,9 +428,9 @@ modules:
         commit: 4a60ce1ab9fdb962004c6a959f682ace3db50cbd
         x-checker-data:
           type: json
-          parent-id: telegram-desktop-git-0
+          parent-id: ayugram-git-0
           commit-data-url: >-
-            "https://github.com/telegramdesktop/tdesktop/raw/\($parent.new.tag//$parent.current.tag)/snap/snapcraft.yaml"
+            "https://github.com/AyuGram/AyuGramDesktop/raw/\($parent.new.tag//$parent.current.tag)/snap/snapcraft.yaml"
           commit-query: >-
             .parts.webrtc."source-commit"
           version-data-url: >-
@@ -444,7 +444,7 @@ modules:
     cleanup:
       - '*'
 
-  - name: telegram-desktop
+  - name: ayugram-desktop
     buildsystem: cmake-ninja
     builddir: true
     build-options:
@@ -459,12 +459,12 @@ modules:
       - -DDESKTOP_APP_USE_PACKAGED_LAZY=ON
     sources:
       - type: git
-        url: https://github.com/telegramdesktop/tdesktop.git
-        commit: 0de50808743cfeaff0925cf7a63fdda207e29e85
-        tag: v5.3.2
+        url: https://github.com/AyuGram/AyuGramDesktop.git
+        commit: f73edfec943dd28f1bf082f08b8125116eceae2e
+        tag: v5.2.2
         x-checker-data:
           type: json
-          url: https://api.github.com/repos/telegramdesktop/tdesktop/releases
+          url: https://api.github.com/repos/AyuGram/AyuGramDesktop/releases
           tag-query: first | .tag_name
           timestamp-query: first | .published_at
           version-query: $tag | sub("^[vV]"; "")

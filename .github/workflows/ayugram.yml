@@ -1,0 +1,37 @@
+on:
+  push:
+  workflow_dispatch:
+name: CI
+jobs:
+  flatpak:
+    name: 'Flatpak'
+    runs-on: ubuntu-latest
+    container:
+      image: bilelmoussaoui/flatpak-github-actions:freedesktop-23.08
+      options: --privileged
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: 'true'
+
+      - name: Restore cache
+        id: cache
+        uses: actions/cache/restore@v4
+        with:
+          path: .flatpak-builder
+          key: ayugram-flatpak-${{ github.sha }}
+          restore-keys: ayugram-flatpak-
+
+      - uses: flatpak/flatpak-github-actions/flatpak-builder@v6.3
+        with:
+          bundle: ayugram.flatpak
+          manifest-path: com.ayugram.desktop.yml
+          cache: false
+
+      - name: Save cache
+        id: cache-save
+        uses: actions/cache/save@v4
+        if: always()
+        with:
+          path: .flatpak-builder
+          key: ${{ steps.cache.outputs.cache-primary-key }}
